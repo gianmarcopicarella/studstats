@@ -21,7 +21,6 @@ public class AnalizzatoreAnnoDiploma implements Analizzatore {
 	
 	@Override
 	public TipoRapporto getTipo() {
-		// TODO Auto-generated method stub
 		return TipologiaRapporto.AAD;
 	}
 }

@@ -19,5 +19,4 @@ public class Studente {
 	public void set(String key, String value) {
 		this.data.put(key, value);
 	}
-	
 }

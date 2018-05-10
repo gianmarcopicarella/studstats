@@ -28,5 +28,6 @@ public interface AggregatoreStatistico {
      * Restituisce il numero di analizzatori memorizzati
      */
     int numeroAnalizzatori();
-
+    
+    void addAll(Analizzatore[] analizzatori);
 }
