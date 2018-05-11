@@ -31,7 +31,7 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 	
 	@Override
 	public TipoRapporto getTipo() {
-		return TipologiaRapporto.AVSS;
+		return TipologiaRapporto.AMSIPR;
 	}
 
 }
