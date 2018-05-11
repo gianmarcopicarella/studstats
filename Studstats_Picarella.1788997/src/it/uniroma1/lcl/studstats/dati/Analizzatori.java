@@ -6,7 +6,14 @@ import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreSesso;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreStudentiVotoMaggiore;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreTitoloDiStudio;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreVoto;
-
+/**
+ * Interfaccia che istanzia gli analizzatori di base
+ * (e' possibile sostituire i metodi con una propria
+ * implementazione lambda)
+ *
+ * @author gianpcrx
+ *
+ */
 public interface Analizzatori {
 	static Analizzatore annoDiploma() { return new AnalizzatoreAnnoDiploma(); }
     static Analizzatore istituti() { return new AnalizzatoreIstituti(); }

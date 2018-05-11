@@ -11,6 +11,7 @@ import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreSesso;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreStudentiVotoMaggiore;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreTitoloDiStudio;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreVoto;
+import it.uniroma1.lcl.studstats.dati.Analizzatori;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreMediaStudentiItalianiPerRegione;
 
 class StudstatsTest {
@@ -23,12 +24,7 @@ class StudstatsTest {
 	    {
 	   	 	stats = Studstats.fromFile(PERCORSO);
 	   	 	//Studstats stats = Studstats.fromFile(Paths.get(PERCORSO));
-	   	 	stats.add(new AnalizzatoreAnnoDiploma());
-		   	stats.add(new AnalizzatoreSesso());
-		   	stats.add(new AnalizzatoreVoto());
-		   	//stats.add(new AnalizzatoreStudentiVotoMaggiore(65));
-		   	stats.add(new AnalizzatoreTitoloDiStudio());
-		   	stats.add(new AnalizzatoreIstituti());
+	   	 	stats.addAll(Analizzatori.allBasic());
 	    }
 
 	    @Test

@@ -8,26 +8,32 @@ import it.uniroma1.lcl.studstats.dati.TipoRapporto;
 public interface AggregatoreStatistico {
 	/**
      * Aggiunge uno studente per l'analisi
-     * @param s studente da aggiungere
+     * @param s Studente da aggiungere.
      */
     void add(Studente s);
     
     /**
-     * Aggiunge un analizzatore all'aggregatore
-     * @param an analizzatore da aggiungere
+     * Aggiunge un Analizzatore all'aggregatore
+     * @param an Analizzatore da aggiungere.
      */
     void add(Analizzatore an);
     /**
      * Genera i rapporti dei tipi specificati 
      * (tutti i tipi se non viene specificato nessun tipo)
-     * @param tipiRapporto i tipi di cui si vogliono i rapporti
-     * @return la lista dei rapporti generati
+     * @param tipiRapporto I tipi di cui si vogliono i rapporti.
+     * @return la lista dei rapporti generati.
      */
     List<Rapporto> generaRapporti(TipoRapporto... tipiRapporto);
+    
     /**
-     * Restituisce il numero di analizzatori memorizzati
+     * Restituisce il numero di analizzatori memorizzati.
+     * @return Il numero di Analizzatore memorizzati.
      */
     int numeroAnalizzatori();
     
+    /**
+     * Aggiunge all'AggregatoreStatistico tutti gli analizzatori presenti nell'array.
+     * @param analizzatori Array di Analizzatore da aggiungere all'AggregatoreStatistico.
+     */
     void addAll(Analizzatore[] analizzatori);
 }
