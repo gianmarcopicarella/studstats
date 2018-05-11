@@ -26,7 +26,7 @@ public class FileCsv extends File {
 		}
 		catch(IOException e)
 		{
-			// gestisci l’eccezione di I/O
+			// gestisci lï¿½eccezione di I/O
 			e.printStackTrace();
 			return null;
 		}
