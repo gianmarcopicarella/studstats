@@ -8,7 +8,7 @@ import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
 import it.uniroma1.lcl.studstats.dati.Analizzatore;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
-import it.uniroma1.lcl.studstats.dati.TipologiaRapporto;
+import it.uniroma1.lcl.studstats.dati.RapportoSemplice;
 
 public class AnalizzatoreIstituti implements Analizzatore {
 
@@ -22,7 +22,7 @@ public class AnalizzatoreIstituti implements Analizzatore {
 	@Override
 	public TipoRapporto getTipo() {
 		// TODO Auto-generated method stub
-		return TipologiaRapporto.AI;
+		return RapportoSemplice.AI;
 	}
 
 }

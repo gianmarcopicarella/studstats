@@ -1,5 +1,6 @@
 package it.uniroma1.lcl.studstats;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -32,6 +33,17 @@ public class Studstats implements AggregatoreStatistico {
 	 */
 	public static Studstats fromFile(String filepath) { return new Studstats(filepath); }
 	
+	/**
+	 * Ritorna una nuova istanza della classe Studstats a partire da un oggetto di tipo Path fornito come parametro.
+	 * @param fp Oggetto Path del file da caricare.
+	 * @return Un istanza della classe Studstats inizializzata con il file fornito in input.
+	 */
+	public static Studstats fromFile(Path fp) { return new Studstats(fp.toString()); }
+	
+	/**
+	 * Inizializza l'oggetto tramite il parametro fp di tipo String
+	 * @param fp
+	 */
 	private Studstats(String fp) {
 		this.file = new FileCsv(fp);
 		this.studenti = (ArrayList<Studente>) this.file.parse();

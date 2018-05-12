@@ -8,7 +8,7 @@ import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
 import it.uniroma1.lcl.studstats.dati.Analizzatore;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
-import it.uniroma1.lcl.studstats.dati.TipologiaRapporto;
+import it.uniroma1.lcl.studstats.dati.RapportoSemplice;
 
 public class AnalizzatoreTitoloDiStudio implements Analizzatore {
 
@@ -21,7 +21,7 @@ public class AnalizzatoreTitoloDiStudio implements Analizzatore {
 	
 	@Override
 	public TipoRapporto getTipo() {
-		return TipologiaRapporto.ATDS;
+		return RapportoSemplice.ATDS;
 	}
 
 }

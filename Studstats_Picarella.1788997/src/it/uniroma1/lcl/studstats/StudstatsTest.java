@@ -5,11 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreAnnoDiploma;
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreIstituti;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreSesso;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreStudentiVotoMaggiore;
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreTitoloDiStudio;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreVoto;
 import it.uniroma1.lcl.studstats.dati.Analizzatori;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreMediaStudentiItalianiPerRegione;

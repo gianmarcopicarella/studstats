@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
 import it.uniroma1.lcl.studstats.dati.Analizzatore;
+import it.uniroma1.lcl.studstats.dati.RapportoComposto;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
-import it.uniroma1.lcl.studstats.dati.TipologiaRapporto;
 
 public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore {
 
@@ -31,7 +31,7 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 	
 	@Override
 	public TipoRapporto getTipo() {
-		return TipologiaRapporto.AMSIPR;
+		return RapportoComposto.AMSIPR;
 	}
 
 }

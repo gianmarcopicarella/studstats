@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
 import it.uniroma1.lcl.studstats.dati.Analizzatore;
+import it.uniroma1.lcl.studstats.dati.RapportoComposto;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
-import it.uniroma1.lcl.studstats.dati.TipologiaRapporto;
 
 public class AnalizzatoreStudentiVotoMaggiore implements Analizzatore {
 	
@@ -33,8 +33,7 @@ public class AnalizzatoreStudentiVotoMaggiore implements Analizzatore {
 	
 	@Override
 	public TipoRapporto getTipo() {
-		// TODO Auto-generated method stub
-		return TipologiaRapporto.ASVM;
+		return RapportoComposto.ASVM;
 	}
 
 }

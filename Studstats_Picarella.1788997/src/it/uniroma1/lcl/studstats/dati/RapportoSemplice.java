@@ -5,7 +5,7 @@ package it.uniroma1.lcl.studstats.dati;
  * @author gianpcrx
  *
  */
-public enum TipologiaRapporto implements TipoRapporto {
-	AAD, AI, AS, ATDS, AV, ASVM, AMSIPR;
+public enum RapportoSemplice implements TipoRapporto {
+	AAD, AI, AS, ATDS, AV;
 
 }
