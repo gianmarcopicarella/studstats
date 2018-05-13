@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"it.uniroma1.lcl.studstats.analizzatori"}]
+packageSearchIndex = [{"l":"it.uniroma1.lcl.studstats"},{"l":"it.uniroma1.lcl.studstats.analizzatori"},{"l":"it.uniroma1.lcl.studstats.dati"},{"l":"it.uniroma1.lcl.studstats.utils"}]
