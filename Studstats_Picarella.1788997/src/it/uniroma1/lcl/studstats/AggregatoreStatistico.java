@@ -35,5 +35,7 @@ public interface AggregatoreStatistico {
      * Aggiunge all'AggregatoreStatistico tutti gli analizzatori presenti nell'array.
      * @param analizzatori Array di Analizzatore da aggiungere all'AggregatoreStatistico.
      */
-    void addAll(Analizzatore[] analizzatori);
+    default void addAll(Analizzatore[] analizzatori) {
+    	for(Analizzatore a : analizzatori) add(a);
+    }
 }

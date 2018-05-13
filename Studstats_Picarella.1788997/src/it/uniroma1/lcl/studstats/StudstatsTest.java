@@ -39,7 +39,7 @@ class StudstatsTest {
 		   	 for (Rapporto r : stats.generaRapporti())
 		   		 System.out.println(r);
 	    }
-
+	    
 	    @Test
 	    void testGeneraRapporti2()
 	    {

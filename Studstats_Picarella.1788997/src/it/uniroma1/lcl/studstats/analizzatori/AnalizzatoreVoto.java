@@ -12,8 +12,18 @@ import it.uniroma1.lcl.studstats.dati.Analizzatore;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
 import it.uniroma1.lcl.studstats.dati.RapportoSemplice;
 
+/**
+ * Analizzatore che restituisce un Rapporto contenente il voto medio, 
+ * il voto massimo e minimo e la mediana dei voti degli studenti.
+ * @author gianpcrx
+ *
+ */
 public class AnalizzatoreVoto implements Analizzatore {
-
+	
+	/**
+	 * Genera un Rapporto contenete il voto medio, minimo, massimo e mediano dei vari studenti.
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
@@ -30,10 +40,12 @@ public class AnalizzatoreVoto implements Analizzatore {
 		map.put("VOTO_MEDIO", new DecimalFormat("#.##").format(count / studs.size()));
 		map.put("VOTO_MAX", "" + max);
 		map.put("VOTO_MIN", "" + min);
-		
 		return new Rapporto(map);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public TipoRapporto getTipo() {
 		return RapportoSemplice.AV;

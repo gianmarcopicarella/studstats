@@ -10,15 +10,27 @@ import it.uniroma1.lcl.studstats.dati.Analizzatore;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
 import it.uniroma1.lcl.studstats.dati.RapportoSemplice;
 
+/**
+ * Analizzatore che restituisce un Rapporto contenente il numero di studenti raggruppati per sesso. 
+ * @author gianpcrx
+ *
+ */
 public class AnalizzatoreSesso implements Analizzatore {
-
+	
+	/**
+	 * Genera un Rapporto contenente il numero di studenti per ogni sesso.
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		Map<String, Map<String, Integer>> finalMap = new HashMap<String, Map<String, Integer>>();
 		finalMap.put("SESSO", Analizzatore.filterByKeyDescendant(studs, "SESSO"));
 		return new Rapporto(finalMap);
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public TipoRapporto getTipo() {
 		// TODO Auto-generated method stub

@@ -11,8 +11,17 @@ import it.uniroma1.lcl.studstats.dati.Analizzatore;
 import it.uniroma1.lcl.studstats.dati.RapportoComposto;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
 
+/**
+ * Analizzatore che restituisce un Rapporto contenente la media regionale italiana dei vari studenti.
+ * @author gianpcrx
+ *
+ */
 public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore {
-
+	
+	/**
+	 * Genera un Rapporto contenente per ogni regione italiana la media dei vari studenti diplomati.
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		Map<String, Integer> t = new HashMap<>();
@@ -29,6 +38,9 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 		return new Rapporto(r);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public TipoRapporto getTipo() {
 		return RapportoComposto.AMSIPR;

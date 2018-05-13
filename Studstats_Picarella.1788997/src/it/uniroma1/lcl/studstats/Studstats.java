@@ -65,9 +65,8 @@ public class Studstats implements AggregatoreStatistico {
 	 */
 	@Override
 	public void add(Analizzatore an) {
-		TipoRapporto t = an.getTipo();
-		if(!analizzatori.containsKey(t)) analizzatori.put(t, new ArrayList<Analizzatore>());
-		this.analizzatori.get(t).add(an);
+		this.analizzatori.putIfAbsent(an.getTipo(), new ArrayList<Analizzatore>());
+		this.analizzatori.get(an.getTipo()).add(an);
 		this.analizerCounter++;
 	}
 
@@ -95,13 +94,5 @@ public class Studstats implements AggregatoreStatistico {
 	@Override
 	public int numeroAnalizzatori() {
 		return this.analizerCounter;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void addAll(Analizzatore[] analizzatori) {
-		for(Analizzatore an : analizzatori) this.add(an);
 	}
 }
