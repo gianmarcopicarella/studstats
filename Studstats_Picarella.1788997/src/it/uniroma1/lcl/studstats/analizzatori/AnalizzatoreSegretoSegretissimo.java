@@ -19,7 +19,7 @@ import it.uniroma1.lcl.studstats.utils.Utils;
  * @author gianpcrx
  *
  */
-public class AnalizzatoreRegioni implements Analizzatore {
+public class AnalizzatoreSegretoSegretissimo implements Analizzatore {
 	
 	/**
 	 * Restituisce un rapporto contenente il numero di studenti nati per ogni regione.
@@ -41,5 +41,4 @@ public class AnalizzatoreRegioni implements Analizzatore {
 	public TipoRapporto getTipo() {
 		return RapportoSemplice.AR;
 	}
-
 }

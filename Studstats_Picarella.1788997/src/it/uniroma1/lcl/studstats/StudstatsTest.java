@@ -7,9 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreSesso;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreStudentiVotoMaggiore;
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreVoto;
 import it.uniroma1.lcl.studstats.dati.Analizzatori;
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreRegioni;
+import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreSegretoSegretissimo;
 
 class StudstatsTest {
 	    public static final String PERCORSO = "src/files/IMMATRICOLATI_INFORMATICA_SAPIENZA_2018_randomizzato.csv";
@@ -55,8 +54,8 @@ class StudstatsTest {
 	    {
 	   	 	System.out.println("=== testGeneraRapporti3 ===");
 	        // questa classe sara’ creata da me (createne una semplice)
-	   	 	stats.add(new AnalizzatoreRegioni());
-	   	 	for (Rapporto r : stats.generaRapporti(new AnalizzatoreVoto().getTipo(), new AnalizzatoreRegioni().getTipo()))
+	   	 	stats.add(new AnalizzatoreSegretoSegretissimo());
+	   	 	for (Rapporto r : stats.generaRapporti(new AnalizzatoreSegretoSegretissimo().getTipo(), new AnalizzatoreSegretoSegretissimo().getTipo()))
 	   	 		System.out.println(r);
 	    }
 
