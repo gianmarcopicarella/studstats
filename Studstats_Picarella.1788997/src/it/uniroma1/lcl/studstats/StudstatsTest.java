@@ -57,7 +57,6 @@ class StudstatsTest {
 	   	 	stats.add(new AnalizzatoreSegretoSegretissimo());
 	   	 	for (Rapporto r : stats.generaRapporti(new AnalizzatoreSegretoSegretissimo().getTipo(), new AnalizzatoreSegretoSegretissimo().getTipo()))
 	   	 		System.out.println(r);
-	   	 	aaa
 	    }
 
 }
