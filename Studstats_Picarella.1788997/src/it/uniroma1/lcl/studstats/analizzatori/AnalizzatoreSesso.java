@@ -24,7 +24,7 @@ public class AnalizzatoreSesso implements Analizzatore {
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		Map<String, Map<String, Integer>> finalMap = new HashMap<String, Map<String, Integer>>();
-		finalMap.put("SESSO", Analizzatore.filterByKeyDescendant(studs, "SESSO"));
+		finalMap.put("SESSO", Analizzatore.filterByKey(studs, "SESSO"));
 		return new Rapporto(finalMap);
 	}
 	

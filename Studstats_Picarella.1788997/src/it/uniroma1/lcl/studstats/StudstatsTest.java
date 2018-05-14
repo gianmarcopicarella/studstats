@@ -47,7 +47,7 @@ class StudstatsTest {
 		   	 Rapporto r = stats.generaRapporti(new AnalizzatoreSesso().getTipo())
 		   						 .get(0);
 		   	 System.out.println(r);;
-		   	 assertEquals(r.toString(), "{SESSO={M=288, F=26}}");
+		   	 assertEquals(r.toString(), "{SESSO={F=26, M=288}}");
 	    }
 
 	    @Test

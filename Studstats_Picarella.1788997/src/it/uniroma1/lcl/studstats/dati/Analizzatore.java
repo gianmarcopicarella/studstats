@@ -39,11 +39,10 @@ public interface Analizzatore
      * campo passato come parametro e per valore il numero degli studenti 
      * che possiede quella determinata chiave nei propri campi.
      */
-    static Map<String, Integer> filterByKeyDescendant(Collection<Studente> studs, String key) {
+    static TreeMap<String, Integer> filterByKey(Collection<Studente> studs, String key) {
     		return studs.stream().collect(Collectors.toMap(
     				s -> ((Studente) s).get(key), s -> 1, 
-    				(s1, s2) -> s1 + s2, TreeMap::new))
-    				.descendingMap();
+    				(s1, s2) -> s1 + s2, TreeMap::new));
     }
     
     /**
@@ -54,7 +53,7 @@ public interface Analizzatore
      * che possiede quella determinata chiave nei propri campi.
      */
     static Map<String, Integer> reduceByKeyToMap(Collection<Studente> studs, String key){
-    		return filterByKeyDescendant(studs, key).entrySet()
+    		return filterByKey(studs, key).entrySet()
     				.stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
     				.collect(Collectors.toMap(i -> i.getKey(), i -> i.getValue(), (i1, i2) -> i1, LinkedHashMap::new));
     }

@@ -26,7 +26,7 @@ public class AnalizzatoreAnnoDiploma implements Analizzatore {
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		Map<String, Map<String, Integer>> finalMap = new HashMap<String, Map<String, Integer>>();
-		finalMap.put("ANNI_DIPLOMA", Analizzatore.filterByKeyDescendant(studs, "ANNO_DIPLOMA"));
+		finalMap.put("ANNI_DIPLOMA", Analizzatore.filterByKey(studs, "ANNO_DIPLOMA").descendingMap());
 		return new Rapporto(finalMap);
 	}
 	
