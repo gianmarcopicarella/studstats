@@ -8,6 +8,7 @@ import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
 import it.uniroma1.lcl.studstats.dati.Analizzatore;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
+import it.uniroma1.lcl.studstats.utils.Utils;
 import it.uniroma1.lcl.studstats.dati.RapportoSemplice;
 /**
  * Analizzatore che restituisce un Rapporto contenente il numero di studenti per ogni istituto superiore trovato. 
@@ -24,9 +25,9 @@ public class AnalizzatoreIstituti implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		Map<String, Map<String, Integer>> finalMap = new HashMap<String, Map<String, Integer>>();
-		finalMap.put("ISTITUTI", Analizzatore.reduceByKeyToMap(studs, "ISTITUTO_SUPERIORE"));		
-		return new Rapporto(finalMap);
+		Map<String, Map<String, Integer>> rapporto = new HashMap<String, Map<String, Integer>>();
+		rapporto.put("ISTITUTI", Utils.filtraEOrdinaPerValoriDecrescenti(studs, "ISTITUTO_SUPERIORE"));		
+		return new Rapporto(rapporto);
 	}
 	
 	/**

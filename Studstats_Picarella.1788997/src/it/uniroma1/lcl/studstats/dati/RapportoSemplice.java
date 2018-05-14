@@ -7,6 +7,6 @@ package it.uniroma1.lcl.studstats.dati;
  *
  */
 public enum RapportoSemplice implements TipoRapporto {
-	AAD, AI, AS, ATDS, AV;
+	AAD, AI, AS, ATDS, AV, AR;
 
 }

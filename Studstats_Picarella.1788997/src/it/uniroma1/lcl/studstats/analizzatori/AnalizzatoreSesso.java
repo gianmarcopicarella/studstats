@@ -8,6 +8,7 @@ import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
 import it.uniroma1.lcl.studstats.dati.Analizzatore;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
+import it.uniroma1.lcl.studstats.utils.Utils;
 import it.uniroma1.lcl.studstats.dati.RapportoSemplice;
 
 /**
@@ -23,9 +24,9 @@ public class AnalizzatoreSesso implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		Map<String, Map<String, Integer>> finalMap = new HashMap<String, Map<String, Integer>>();
-		finalMap.put("SESSO", Analizzatore.filterByKey(studs, "SESSO"));
-		return new Rapporto(finalMap);
+		Map<String, Map<String, Integer>> rapporto = new HashMap<String, Map<String, Integer>>();
+		rapporto.put("SESSO", Utils.filtraPerChiave(studs, "SESSO"));
+		return new Rapporto(rapporto);
 	}
 	
 	/**
@@ -36,5 +37,4 @@ public class AnalizzatoreSesso implements Analizzatore {
 		// TODO Auto-generated method stub
 		return RapportoSemplice.AS;
 	}
-
 }
