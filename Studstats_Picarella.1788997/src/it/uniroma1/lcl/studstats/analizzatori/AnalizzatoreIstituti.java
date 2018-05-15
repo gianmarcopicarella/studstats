@@ -1,8 +1,10 @@
 package it.uniroma1.lcl.studstats.analizzatori;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
@@ -26,7 +28,9 @@ public class AnalizzatoreIstituti implements Analizzatore {
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		return new Rapporto(Map.of("ISTITUTI", 
-				Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs, "ISTITUTO_SUPERIORE")).toString());
+				Utils.ordinaPerValori(studs.stream().map(s -> s.get("ISTITUTO_SUPERIORE") + " " + s.get("COMUNE_ISTITUTO"))
+				.collect(Collectors.toMap(i -> i.toString(), i -> 1, (i1, i2) -> i1 + i2, HashMap::new)), 
+				Map.Entry.<String, Integer>comparingByValue().reversed())).toString());
 	}
 	
 	/**
@@ -34,20 +38,22 @@ public class AnalizzatoreIstituti implements Analizzatore {
 	 */
 	@Override
 	public TipoRapporto getTipo() {
-		// TODO Auto-generated method stub
 		return RapportoSemplice.AI;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.getClass());
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(Object o) {
-		if(o == this) return true;
-		if(o == null || this.getClass() != o.getClass()) return false;
-		Analizzatore c = (Analizzatore)o;
-		return c.getTipo() == this.getTipo();	
+		return o == this || !(o == null || this.getClass() != o.getClass());	
 	}
 }

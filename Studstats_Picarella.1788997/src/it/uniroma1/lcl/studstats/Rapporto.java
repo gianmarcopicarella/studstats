@@ -11,7 +11,7 @@ public class Rapporto {
 	private String stringa;
 	/**
 	 * Presa in input una Map genera l'oggetto che rappresenta il risultato di un'analizzatore.
-	 * @param rapporto Mappa utilizzata per il toString().
+	 * @param s rapporto Mappa utilizzata per il toString().
 	 */
 	public Rapporto(String s) { this.stringa = s; }
 	//public Rapporto(Map<Object, Object> rapporto) { this.rapporto = rapporto; }

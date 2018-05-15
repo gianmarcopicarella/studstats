@@ -51,16 +51,19 @@ public class AnalizzatoreVoto implements Analizzatore {
 		return RapportoSemplice.AV;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.getClass());
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(Object o) {
-		if(o == this) return true;
-		if(o == null || this.getClass() != o.getClass()) return false;
-		Analizzatore c = (Analizzatore)o;
-		return c.getTipo() == this.getTipo();	
+		return o == this || !(o == null || this.getClass() != o.getClass());	
 	}
 }

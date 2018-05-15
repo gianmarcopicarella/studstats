@@ -61,16 +61,19 @@ public class AnalizzatoreStudentiVotoMaggiore implements Analizzatore {
 		return RapportoComposto.ASVM;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.getClass(), this.votoMinimo, this.analizzatore.getClass());
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean equals(Object o) {
-		if(o == this) return true;
-		if(o == null || this.getClass() != o.getClass()) return false;
-		Analizzatore c = (Analizzatore)o;
-		return c.getTipo() == this.getTipo();
+		return o == this || !(o == null || this.getClass() != o.getClass());
 	}
 }
