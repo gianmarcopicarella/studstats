@@ -41,15 +41,10 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 		studs.stream().filter(s -> s.get("NAZIONE_DI_NASCITA").equals("ITALIA"))
 		.collect(Collectors.groupingBy(s -> s.get("REGIONE_DI_NASCITA"))).entrySet()
 		.forEach(e -> {
-			int somma = 0;
-			for(Studente s : e.getValue()) 
-				somma += Integer.parseInt(s.get("MaxDiVOTO"));
-			temp.put(e.getKey(), somma / e.getValue().size());
+			temp.put(e.getKey(), e.getValue().stream()
+					.mapToInt(i -> Integer.parseInt(i.get("MaxDiVOTO"))).sum() / e.getValue().size());
 		});
-		
-		Map<String, Map<String, Integer>> rapporto = new HashMap<>();
-		rapporto.put("MEDIA_REGIONALE", Utils.ordinaPerValori(temp, this.comparator));
-		return new Rapporto(rapporto);
+		return new Rapporto(Map.of("MEDIA_REGIONALE", Utils.ordinaPerValori(temp, this.comparator)));
 	}
 	
 	/**

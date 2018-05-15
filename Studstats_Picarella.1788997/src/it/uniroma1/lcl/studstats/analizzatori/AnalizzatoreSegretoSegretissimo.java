@@ -27,11 +27,9 @@ public class AnalizzatoreSegretoSegretissimo implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		Map<String, Map<String, Integer>> rapporto = new HashMap<String, Map<String, Integer>>();
-		rapporto.put("REGIONI", Utils.filtraEOrdinaPerValoriDecrescenti(studs.stream()
+		return new Rapporto(Map.of("REGIONI", Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs.stream()
 				.filter(s -> s.get("NAZIONE_DI_NASCITA").equals("ITALIA"))
-				.collect(Collectors.toList()), "REGIONE_DI_NASCITA"));		
-		return new Rapporto(rapporto);
+				.collect(Collectors.toList()), "REGIONE_DI_NASCITA")));
 	}
 	
 	/**

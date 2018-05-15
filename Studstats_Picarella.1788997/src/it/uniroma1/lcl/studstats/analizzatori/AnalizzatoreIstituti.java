@@ -25,9 +25,8 @@ public class AnalizzatoreIstituti implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		Map<String, Map<String, Integer>> rapporto = new HashMap<String, Map<String, Integer>>();
-		rapporto.put("ISTITUTI", Utils.filtraEOrdinaPerValoriDecrescenti(studs, "ISTITUTO_SUPERIORE"));		
-		return new Rapporto(rapporto);
+		return new Rapporto(Map.of("ISTITUTI", 
+				Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs, "ISTITUTO_SUPERIORE")));
 	}
 	
 	/**

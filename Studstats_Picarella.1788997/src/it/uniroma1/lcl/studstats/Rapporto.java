@@ -7,8 +7,8 @@ import java.util.Map;
  *
  */
 public class Rapporto {
-	private Map<?, ?> rapporto;
-	public Rapporto(Map<?, ?> rapporto) { this.rapporto = rapporto; }
+	private Map<String, ? super Number> rapporto;
+	public Rapporto(Map<String, ? super Number> rapporto) { this.rapporto = rapporto; }
 	
 	/**
 	 * Restituisce una stringa rappresentante la Map memorizzata.

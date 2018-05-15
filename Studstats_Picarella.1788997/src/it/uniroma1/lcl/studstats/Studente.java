@@ -18,6 +18,7 @@ public class Studente {
 		for(int i = 0; i < keys.length; i++) 
 			this.set(keys[i], values[i]);
 	}
+	
 	/**
 	 * Ritorna il valore alla chiave specificata.
 	 * @param key La chiave da trovare.
@@ -26,6 +27,7 @@ public class Studente {
 	public String get(String key) {
 		return this.data.containsKey(key) ? this.data.get(key) : null;
 	}
+	
 	/**
 	 * Aggiunge o modifica una Entry nella Map dello studente con un nuovo valore fornito come parametro.
 	 * @param key La chiave da trovare o aggiungere.

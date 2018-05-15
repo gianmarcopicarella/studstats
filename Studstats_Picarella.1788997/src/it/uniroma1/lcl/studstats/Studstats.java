@@ -24,7 +24,7 @@ public class Studstats implements AggregatoreStatistico {
 	private File file;
 	private List<Studente> studenti;
 	private Map<TipoRapporto, Collection<Analizzatore>> analizzatori;
-	private int analizerCounter;
+	private int contatoreAnalizzatori;
 	
 	/**
 	 * Ritorna una nuova istanza della classe Studstats a partire da un filepath fornito come parametro.
@@ -67,7 +67,7 @@ public class Studstats implements AggregatoreStatistico {
 	public void add(Analizzatore an) {
 		this.analizzatori.putIfAbsent(an.getTipo(), new ArrayList<Analizzatore>());
 		this.analizzatori.get(an.getTipo()).add(an);
-		this.analizerCounter++;
+		this.contatoreAnalizzatori++;
 	}
 
 	/**
@@ -83,6 +83,7 @@ public class Studstats implements AggregatoreStatistico {
 			this.analizzatori.entrySet().forEach(e -> {
 				e.getValue().forEach(a -> r.add(a.generaRapporto(this.studenti)));
 			});
+		
 		for(TipoRapporto t: tipiRapporto)
 			this.analizzatori.get(t).forEach(a -> r.add(a.generaRapporto(this.studenti)));
 		return r;
@@ -93,6 +94,6 @@ public class Studstats implements AggregatoreStatistico {
 	 */
 	@Override
 	public int numeroAnalizzatori() {
-		return this.analizerCounter;
+		return this.contatoreAnalizzatori;
 	}
 }

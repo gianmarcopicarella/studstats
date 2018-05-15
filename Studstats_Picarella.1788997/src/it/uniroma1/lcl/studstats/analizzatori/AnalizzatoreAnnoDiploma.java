@@ -1,7 +1,6 @@
 package it.uniroma1.lcl.studstats.analizzatori;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import it.uniroma1.lcl.studstats.Rapporto;
@@ -26,9 +25,8 @@ public class AnalizzatoreAnnoDiploma implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		Map<String, Map<String, Integer>> rapporto = new HashMap<String, Map<String, Integer>>();
-		rapporto.put("ANNI_DIPLOMA", Utils.filtraPerChiave(studs, "ANNO_DIPLOMA").descendingMap());
-		return new Rapporto(rapporto);
+		return new Rapporto(Map.of("ANNI_DIPLOMA", 
+				Utils.contaPerChiave(studs, "ANNO_DIPLOMA").descendingMap()));
 	}
 	
 	/**

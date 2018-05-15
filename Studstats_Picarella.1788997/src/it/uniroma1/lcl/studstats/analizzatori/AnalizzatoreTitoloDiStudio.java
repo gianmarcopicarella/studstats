@@ -2,7 +2,6 @@ package it.uniroma1.lcl.studstats.analizzatori;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.TreeMap;
 
 import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
@@ -26,9 +25,8 @@ public class AnalizzatoreTitoloDiStudio implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		Map<String, Map<String, Integer>> rapporto = new TreeMap<>();
-		rapporto.put("TITOLO", Utils.filtraEOrdinaPerValoriDecrescenti(studs, "TITOLO_DI_STUDIO"));
-		return new Rapporto(rapporto);
+		return new Rapporto(Map.of("TITOLO", 
+				Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs, "TITOLO_DI_STUDIO")));
 	}
 	
 	/**

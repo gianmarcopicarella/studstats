@@ -1,7 +1,6 @@
 package it.uniroma1.lcl.studstats.analizzatori;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import it.uniroma1.lcl.studstats.Rapporto;
@@ -24,9 +23,7 @@ public class AnalizzatoreSesso implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		Map<String, Map<String, Integer>> rapporto = new HashMap<String, Map<String, Integer>>();
-		rapporto.put("SESSO", Utils.filtraPerChiave(studs, "SESSO"));
-		return new Rapporto(rapporto);
+		return new Rapporto(Map.of("SESSO", Utils.contaPerChiave(studs, "SESSO")));
 	}
 	
 	/**

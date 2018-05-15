@@ -22,7 +22,7 @@ public final class Utils {
      * campo passato come parametro e per valore il numero degli studenti 
      * che possiede quella determinata chiave nei propri campi.
      */
-    public static TreeMap<String, Integer> filtraPerChiave(Collection<Studente> studs, String key) {
+    public static TreeMap<String, Integer> contaPerChiave(Collection<Studente> studs, String key) {
     		return studs.stream().collect(Collectors.toMap(s -> s.get(key), s -> 1, 
     				(s1, s2) -> s1 + s2, TreeMap::new));
     }
@@ -34,8 +34,8 @@ public final class Utils {
      * campo passato come parametro e per valore il numero degli studenti 
      * che possiede quella determinata chiave nei propri campi.
      */
-    public static Map<String, Integer> filtraEOrdinaPerValoriDecrescenti(Collection<Studente> studs, String key){
-    		return ordinaPerValori(filtraPerChiave(studs, key), 
+    public static Map<String, Integer> contaPerChiaveEOrdinaPerValoriDecrescenti(Collection<Studente> studs, String key){
+    		return ordinaPerValori(contaPerChiave(studs, key), 
     				Map.Entry.<String, Integer>comparingByValue().reversed());
     	
     }

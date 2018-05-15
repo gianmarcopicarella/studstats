@@ -1,10 +1,10 @@
 package it.uniroma1.lcl.studstats.analizzatori;
 
-import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
@@ -26,20 +26,19 @@ public class AnalizzatoreVoto implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-		double count = 0;
-		Map<String, String> rapporto = new HashMap<String, String>();		
-		rapporto.put("VOTO_MEDIANO", ((List<Studente>)studs).get(studs.size() / 2).get("MaxDiVOTO"));
-		for(Studente s : studs) {
-			int t = Integer.valueOf(s.get("MaxDiVOTO"));
-			if(t < min) min = t;
-			else if( t > max) max = t;
-			count += t;
-		}
+		Map<String, Number> rapporto = new HashMap<String, Number>();		
+		List<Integer> ints = studs.stream().map(s -> Integer.parseInt(s.get("MaxDiVOTO")))
+				.sorted().collect(Collectors.toList());
 		
-		rapporto.put("VOTO_MEDIO", new DecimalFormat("#.##").format(count / studs.size()));
-		rapporto.put("VOTO_MAX", "" + max);
-		rapporto.put("VOTO_MIN", "" + min);
+		int size = studs.size();
+		if (size > 0) { 
+			rapporto.put("VOTO_MIN", ints.get(0));
+			rapporto.put("VOTO_MAX", ints.get(size - 1));
+			rapporto.put("VOTO_MEDIANO", size % 2 == 0 ? 
+					(ints.get(size / 2 - 1) + ints.get(size / 2)) / 2 :
+					ints.get(size / 2));
+			rapporto.put("VOTO_MEDIO", ints.stream().mapToInt(i->i).sum() / (float)(size));
+		}
 		return new Rapporto(rapporto);
 	}
 	
@@ -50,5 +49,4 @@ public class AnalizzatoreVoto implements Analizzatore {
 	public TipoRapporto getTipo() {
 		return RapportoSemplice.AV;
 	}
-	
 }
