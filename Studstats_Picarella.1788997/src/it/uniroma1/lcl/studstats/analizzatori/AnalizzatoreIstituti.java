@@ -1,7 +1,6 @@
 package it.uniroma1.lcl.studstats.analizzatori;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import it.uniroma1.lcl.studstats.Rapporto;
