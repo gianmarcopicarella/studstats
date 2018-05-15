@@ -1,6 +1,7 @@
 package it.uniroma1.lcl.studstats.analizzatori;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import it.uniroma1.lcl.studstats.Rapporto;
@@ -59,5 +60,17 @@ public class AnalizzatoreStudentiVotoMaggiore implements Analizzatore {
 	public TipoRapporto getTipo() {
 		return RapportoComposto.ASVM;
 	}
-
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getClass(), this.votoMinimo, this.analizzatore.getClass());
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == this) return true;
+		if(o == null || this.getClass() != o.getClass()) return false;
+		Analizzatore c = (Analizzatore)o;
+		return c.getTipo() == this.getTipo();
+	}
 }

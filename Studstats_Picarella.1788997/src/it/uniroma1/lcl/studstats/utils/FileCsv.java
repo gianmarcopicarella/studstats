@@ -12,6 +12,10 @@ import it.uniroma1.lcl.studstats.Studente;
  */
 public class FileCsv extends File {
 	
+	/**
+	 * 
+	 * @param fp Stringa rappresentante la posizione (relativa o assoluta) del file.
+	 */
 	public FileCsv(String fp) { super(fp); }
 	
 	/**
@@ -22,18 +26,15 @@ public class FileCsv extends File {
 	 */
 	@Override
 	public Collection<Studente> parse() {
-		// TODO Auto-generated method stub
 		Collection<Studente> studenti = new ArrayList<Studente>();
 		try(BufferedReader br = this.getBufferedReader())
 		{
-			//Leggo le chiavi del file
 			String[] keys = br.readLine().split(";");
 			while(br.ready()) studenti.add(new Studente(keys, br.readLine().split(";")));
 			return studenti;
 		}
 		catch(IOException e)
 		{
-			// gestisci l�eccezione di I/O
 			e.printStackTrace();
 			return studenti;
 		}

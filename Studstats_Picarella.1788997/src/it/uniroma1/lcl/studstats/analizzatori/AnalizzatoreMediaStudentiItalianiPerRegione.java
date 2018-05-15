@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
@@ -44,7 +45,7 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 			temp.put(e.getKey(), e.getValue().stream()
 					.mapToInt(i -> Integer.parseInt(i.get("MaxDiVOTO"))).sum() / e.getValue().size());
 		});
-		return new Rapporto(Map.of("MEDIA_REGIONALE", Utils.ordinaPerValori(temp, this.comparator)));
+		return new Rapporto(Map.of("MEDIA_REGIONALE", Utils.ordinaPerValori(temp, this.comparator)).toString());
 	}
 	
 	/**
@@ -53,5 +54,18 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 	@Override
 	public TipoRapporto getTipo() {
 		return RapportoComposto.AMSIPR;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getClass(), this.comparator);
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == this) return true;
+		if(o == null || this.getClass() != o.getClass()) return false;
+		Analizzatore c = (Analizzatore)o;
+		return c.getTipo() == this.getTipo();
 	}
 }

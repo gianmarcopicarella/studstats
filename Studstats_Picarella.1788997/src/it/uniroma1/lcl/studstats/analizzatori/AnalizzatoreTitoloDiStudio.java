@@ -2,6 +2,7 @@ package it.uniroma1.lcl.studstats.analizzatori;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 
 import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
@@ -26,7 +27,7 @@ public class AnalizzatoreTitoloDiStudio implements Analizzatore {
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		return new Rapporto(Map.of("TITOLO", 
-				Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs, "TITOLO_DI_STUDIO")));
+				Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs, "TITOLO_DI_STUDIO")).toString());
 	}
 	
 	/**
@@ -36,5 +37,17 @@ public class AnalizzatoreTitoloDiStudio implements Analizzatore {
 	public TipoRapporto getTipo() {
 		return RapportoSemplice.ATDS;
 	}
-
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getClass());
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == this) return true;
+		if(o == null || this.getClass() != o.getClass()) return false;
+		Analizzatore c = (Analizzatore)o;
+		return c.getTipo() == this.getTipo();	
+	}
 }

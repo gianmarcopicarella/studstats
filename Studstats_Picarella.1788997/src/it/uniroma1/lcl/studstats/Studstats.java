@@ -4,8 +4,10 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import it.uniroma1.lcl.studstats.dati.Analizzatore;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
@@ -23,7 +25,7 @@ public class Studstats implements AggregatoreStatistico {
 	
 	private File file;
 	private List<Studente> studenti;
-	private Map<TipoRapporto, Collection<Analizzatore>> analizzatori;
+	private Map<TipoRapporto, Set<Analizzatore>> analizzatori;
 	private int contatoreAnalizzatori;
 	
 	/**
@@ -47,7 +49,7 @@ public class Studstats implements AggregatoreStatistico {
 	private Studstats(String fp) {
 		this.file = new FileCsv(fp);
 		this.studenti = (ArrayList<Studente>) this.file.parse();
-		this.analizzatori = new HashMap<TipoRapporto, Collection<Analizzatore>>();
+		this.analizzatori = new HashMap<TipoRapporto, Set<Analizzatore>>();
 	}
 	
 	/**
@@ -65,7 +67,7 @@ public class Studstats implements AggregatoreStatistico {
 	 */
 	@Override
 	public void add(Analizzatore an) {
-		this.analizzatori.putIfAbsent(an.getTipo(), new ArrayList<Analizzatore>());
+		this.analizzatori.putIfAbsent(an.getTipo(), new HashSet<Analizzatore>());
 		this.analizzatori.get(an.getTipo()).add(an);
 		this.contatoreAnalizzatori++;
 	}

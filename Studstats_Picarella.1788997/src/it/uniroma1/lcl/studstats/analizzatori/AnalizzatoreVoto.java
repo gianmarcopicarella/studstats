@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import it.uniroma1.lcl.studstats.Rapporto;
@@ -37,9 +38,9 @@ public class AnalizzatoreVoto implements Analizzatore {
 			rapporto.put("VOTO_MEDIANO", size % 2 == 0 ? 
 					(ints.get(size / 2 - 1) + ints.get(size / 2)) / 2 :
 					ints.get(size / 2));
-			rapporto.put("VOTO_MEDIO", ints.stream().mapToInt(i->i).sum() / (float)(size));
+			rapporto.put("VOTO_MEDIO", Math.floor(100 * ints.stream().mapToInt(i->i).sum() / size) / 100);
 		}
-		return new Rapporto(rapporto);
+		return new Rapporto(rapporto.toString());
 	}
 	
 	/**
@@ -48,5 +49,18 @@ public class AnalizzatoreVoto implements Analizzatore {
 	@Override
 	public TipoRapporto getTipo() {
 		return RapportoSemplice.AV;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getClass());
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == this) return true;
+		if(o == null || this.getClass() != o.getClass()) return false;
+		Analizzatore c = (Analizzatore)o;
+		return c.getTipo() == this.getTipo();	
 	}
 }

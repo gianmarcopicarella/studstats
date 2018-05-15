@@ -34,6 +34,7 @@ class StudstatsTest {
 	    @Test
 	    void testGeneraRapporti1()
 	    {
+	    	
 		   	 System.out.println("=== testGeneraRapporti1 ===");
 		   	 for (Rapporto r : stats.generaRapporti())
 		   		 System.out.println(r);
@@ -43,9 +44,8 @@ class StudstatsTest {
 	    void testGeneraRapporti2()
 	    {
 		   	 System.out.println("=== testGeneraRapporti2 ===");
-		   	 Rapporto r = stats.generaRapporti(new AnalizzatoreSesso().getTipo())
-		   						 .get(0);
-		   	 System.out.println(r);;
+		   	 Rapporto r = stats.generaRapporti(new AnalizzatoreSesso().getTipo()).get(0);
+		   	 System.out.println(r);
 		   	 assertEquals(r.toString(), "{SESSO={F=26, M=288}}");
 	    }
 
