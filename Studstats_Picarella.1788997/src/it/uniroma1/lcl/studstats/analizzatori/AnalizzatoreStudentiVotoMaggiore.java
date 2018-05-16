@@ -74,6 +74,8 @@ public class AnalizzatoreStudentiVotoMaggiore implements Analizzatore {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		return o == this || !(o == null || this.getClass() != o.getClass());
+		if(o != this || o == null || this.getClass() != o.getClass()) return false;
+		AnalizzatoreStudentiVotoMaggiore a = (AnalizzatoreStudentiVotoMaggiore)(o);
+		return a.votoMinimo == this.votoMinimo && a.analizzatore == this.analizzatore;
 	}
 }

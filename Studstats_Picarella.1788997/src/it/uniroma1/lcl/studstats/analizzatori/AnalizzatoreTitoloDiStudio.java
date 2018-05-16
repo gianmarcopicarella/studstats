@@ -27,7 +27,7 @@ public class AnalizzatoreTitoloDiStudio implements Analizzatore {
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		return new Rapporto(Map.of("TITOLO", 
-				Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs, "TITOLO_DI_STUDIO")).toString());
+				Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs, "TITOLO_DI_STUDIO")));
 	}
 	
 	/**

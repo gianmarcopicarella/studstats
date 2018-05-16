@@ -1,10 +1,8 @@
 package it.uniroma1.lcl.studstats.analizzatori;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
@@ -28,9 +26,7 @@ public class AnalizzatoreIstituti implements Analizzatore {
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		return new Rapporto(Map.of("ISTITUTI", 
-				Utils.ordinaPerValori(studs.stream().map(s -> s.get("ISTITUTO_SUPERIORE") + " " + s.get("COMUNE_ISTITUTO"))
-				.collect(Collectors.toMap(i -> i.toString(), i -> 1, (i1, i2) -> i1 + i2, HashMap::new)), 
-				Map.Entry.<String, Integer>comparingByValue().reversed())).toString());
+				Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs, "ISTITUTO_SUPERIORE")));
 	}
 	
 	/**

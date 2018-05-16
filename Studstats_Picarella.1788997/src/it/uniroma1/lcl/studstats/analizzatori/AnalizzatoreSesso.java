@@ -24,7 +24,7 @@ public class AnalizzatoreSesso implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		return new Rapporto(Map.of("SESSO", Utils.contaPerChiave(studs, "SESSO")).toString());
+		return new Rapporto(Map.of("SESSO", Utils.contaPerChiave(studs, "SESSO")));
 	}
 	
 	/**

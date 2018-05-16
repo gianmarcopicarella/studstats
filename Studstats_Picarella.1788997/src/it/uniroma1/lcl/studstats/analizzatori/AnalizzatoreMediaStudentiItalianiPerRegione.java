@@ -45,7 +45,8 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 			temp.put(e.getKey(), e.getValue().stream()
 					.mapToInt(i -> Integer.parseInt(i.get("MaxDiVOTO"))).sum() / e.getValue().size());
 		});
-		return new Rapporto(Map.of("MEDIA_REGIONALE", Utils.ordinaPerValori(temp, this.comparator)).toString());
+		return new Rapporto(Map.of("MEDIA_REGIONALE", 
+				Utils.ordinaPerValori(temp, this.comparator)));
 	}
 	
 	/**
@@ -69,6 +70,8 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 	 */
 	@Override
 	public boolean equals(Object o) {
-		return o == this || !(o == null || this.getClass() != o.getClass());
+		if(o != this || o == null || this.getClass() != o.getClass()) return false;
+		AnalizzatoreMediaStudentiItalianiPerRegione a = (AnalizzatoreMediaStudentiItalianiPerRegione)(o);
+		return a.comparator == this.comparator;
 	}
 }

@@ -9,9 +9,19 @@ import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreSesso;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreStudentiVotoMaggiore;
 import it.uniroma1.lcl.studstats.dati.Analizzatori;
 import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreSegretoSegretissimo;
+// Studente -> dati
+// Rapporto -> dati
+// Aggregatore -> studstats
+// Tipo rapporto -> dati
+// Analizzatore -> dati
+// Analizzatori -> dati
+// AnalizzatoreSegretoseg -> dati
+// tutti analizzatori -> dati
+// Aggreg statistico -> studstats
+// Studstats -> studstats
 
 class StudstatsTest {
-	    public static final String PERCORSO = "src/files/IMMATRICOLATI_INFORMATICA_SAPIENZA_2018_randomizzato.csv";
+	    public static final String PERCORSO = "IMMATRICOLATI_INFORMATICA_SAPIENZA_2018_randomizzato.csv";
 	    
 	    private Studstats stats;
 	    
@@ -34,7 +44,6 @@ class StudstatsTest {
 	    @Test
 	    void testGeneraRapporti1()
 	    {
-	    	
 		   	 System.out.println("=== testGeneraRapporti1 ===");
 		   	 for (Rapporto r : stats.generaRapporti())
 		   		 System.out.println(r);

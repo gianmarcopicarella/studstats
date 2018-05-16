@@ -22,7 +22,7 @@ public final class Utils {
      * campo passato come parametro e per valore il numero degli studenti 
      * che possiede quella determinata chiave nei propri campi.
      */
-    public static TreeMap<String, Integer> contaPerChiave(Collection<Studente> studs, String key) {
+    public static Map<String, Integer> contaPerChiave(Collection<Studente> studs, String key) {
     		return studs.stream().collect(Collectors.toMap(s -> s.get(key), s -> 1, 
     				(s1, s2) -> s1 + s2, TreeMap::new));
     }

@@ -40,7 +40,7 @@ public class AnalizzatoreVoto implements Analizzatore {
 					ints.get(size / 2));
 			rapporto.put("VOTO_MEDIO", Math.floor(100 * ints.stream().mapToInt(i->i).sum() / size) / 100);
 		}
-		return new Rapporto(rapporto.toString());
+		return new Rapporto(Map.of("VOTO", rapporto));
 	}
 	
 	/**

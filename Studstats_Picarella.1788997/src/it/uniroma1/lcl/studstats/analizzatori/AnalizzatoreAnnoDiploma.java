@@ -27,7 +27,7 @@ public class AnalizzatoreAnnoDiploma implements Analizzatore {
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		return new Rapporto(Map.of("ANNI_DIPLOMA", 
-				Utils.contaPerChiave(studs, "ANNO_DIPLOMA").descendingMap()).toString());
+				Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs, "ANNO_DIPLOMA")));
 	}
 	
 	/**
