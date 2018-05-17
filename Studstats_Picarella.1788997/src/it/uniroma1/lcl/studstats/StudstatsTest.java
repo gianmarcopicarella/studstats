@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.uniroma1.lcl.studstats.dati.Analizzatore;
-import it.uniroma1.lcl.studstats.dati.AnalizzatoreIstituti;
-import it.uniroma1.lcl.studstats.dati.AnalizzatoreSegretoSegretissimo;
-import it.uniroma1.lcl.studstats.dati.AnalizzatoreSesso;
-import it.uniroma1.lcl.studstats.dati.AnalizzatoreStudentiVotoMaggiore;
-import it.uniroma1.lcl.studstats.dati.AnalizzatoreVoto;
-import it.uniroma1.lcl.studstats.dati.Analizzatori;
-import it.uniroma1.lcl.studstats.dati.Rapporto;
+import it.uniroma1.lcl.dati.Analizzatore;
+import it.uniroma1.lcl.dati.AnalizzatoreIstituti;
+import it.uniroma1.lcl.dati.AnalizzatoreSegretoSegretissimo;
+import it.uniroma1.lcl.dati.AnalizzatoreSesso;
+import it.uniroma1.lcl.dati.AnalizzatoreStudentiVotoMaggiore;
+import it.uniroma1.lcl.dati.AnalizzatoreVoto;
+import it.uniroma1.lcl.dati.Analizzatori;
+import it.uniroma1.lcl.dati.Rapporto;
 
 /**
  * Classe di test JUnit 5

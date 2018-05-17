@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 
-import it.uniroma1.lcl.studstats.dati.Analizzatore;
-import it.uniroma1.lcl.studstats.dati.Rapporto;
-import it.uniroma1.lcl.studstats.dati.TipoRapporto;
-import it.uniroma1.lcl.studstats.utils.File;
-import it.uniroma1.lcl.studstats.utils.FileCsv;
+import it.uniroma1.lcl.dati.Analizzatore;
+import it.uniroma1.lcl.dati.Rapporto;
+import it.uniroma1.lcl.dati.TipoRapporto;
 import it.uniroma1.lcl.studstats.AggregatoreStatistico;
+import it.uniroma1.lcl.utils.File;
+import it.uniroma1.lcl.utils.FileCsv;
 
 /**
  * Implementazione di AggregatoreStatistico 

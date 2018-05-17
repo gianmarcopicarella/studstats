@@ -1,11 +1,11 @@
-package it.uniroma1.lcl.studstats.dati;
+package it.uniroma1.lcl.dati;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.studstats.utils.Utils;
+import it.uniroma1.lcl.utils.Utils;
 /**
  * Analizzatore che restituisce un Rapporto contenente il numero di studenti per ogni istituto superiore trovato. 
  * Il Rapporto è ordinato in modo descrescente in base alla chiave.

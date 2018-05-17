@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.studstats.dati;
+package it.uniroma1.lcl.dati;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.studstats.utils.Utils;
+import it.uniroma1.lcl.utils.Utils;
 
 /**
  * Analizzatore inizializzato con un comparator che restituisce un Rapporto (ordinato per valore tramite il comparator fornito) contenente la media regionale italiana dei vari studenti.

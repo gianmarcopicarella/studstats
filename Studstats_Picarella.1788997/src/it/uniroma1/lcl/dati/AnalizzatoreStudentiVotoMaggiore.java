@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.studstats.dati;
+package it.uniroma1.lcl.dati;
 
 import java.util.Collection;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.studstats.dati;
+package it.uniroma1.lcl.dati;
 
 import java.util.Collection;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.studstats.utils.Utils;
+import it.uniroma1.lcl.utils.Utils;
 
 
 /**

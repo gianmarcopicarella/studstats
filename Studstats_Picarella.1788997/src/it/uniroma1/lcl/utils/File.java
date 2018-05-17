@@ -1,6 +1,4 @@
-package it.uniroma1.lcl.studstats.utils;
-
-import it.uniroma1.lcl.studstats.Studente;
+package it.uniroma1.lcl.utils;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -8,6 +6,8 @@ import java.io.FileReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
+
+import it.uniroma1.lcl.studstats.Studente;
 
 /**
  * Classe astratta che può essere estesa per dare una implementazione più specifica a seconda del file da parsare.

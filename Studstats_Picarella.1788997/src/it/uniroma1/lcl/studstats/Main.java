@@ -1,7 +1,7 @@
 package it.uniroma1.lcl.studstats;
 
-import it.uniroma1.lcl.studstats.dati.Analizzatori;
-import it.uniroma1.lcl.studstats.dati.Rapporto;
+import it.uniroma1.lcl.dati.Analizzatori;
+import it.uniroma1.lcl.dati.Rapporto;
 
 public class Main {
 

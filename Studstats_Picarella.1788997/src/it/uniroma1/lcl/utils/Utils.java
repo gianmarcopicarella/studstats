@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.studstats.utils;
+package it.uniroma1.lcl.utils;
 
 import java.util.AbstractMap;
 import java.util.Collection;
