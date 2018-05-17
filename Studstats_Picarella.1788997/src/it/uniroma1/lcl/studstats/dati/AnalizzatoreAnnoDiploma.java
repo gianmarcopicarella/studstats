@@ -1,11 +1,8 @@
 package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 import it.uniroma1.lcl.studstats.Studente;
 import it.uniroma1.lcl.studstats.utils.Utils;
@@ -25,26 +22,8 @@ public class AnalizzatoreAnnoDiploma implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		
-		HashMap<String, TreeMap<String, Integer>> m = new HashMap<String, TreeMap<String, Integer>>();
-		m.put("ANNI_DIPLOMA", Utils.contaPerChiave(studs, "ANNO_DIPLOMA"));
-		
-		
-		
-		//studs.stream().collect(Collectors. i -> ((Studente)(i))., HashMap::new, Collectors.counting());
-		
-		TreeMap<String, Integer> t = new TreeMap<String, Integer>((a, b) -> b.compareTo(a)); 
-		
-		
-		
-		
-		t.putAll(studs.stream()
-				.collect(Collectors.toMap(i -> ((Studente)(i)).get("ANNO_DIPLOMA"), i -> 1, (a, b) -> a + b, TreeMap::new)));
-		
-		
-		m.put("ANNI_DIPLOMA", t);
-		
-		return new Rapporto(m);
+		return new Rapporto(Map.of("ANNI_DIPLOMA", 
+				Utils.contaPerChiaveEOrdina(studs, "ANNO_DIPLOMA", Utils.CHIAVIDECRESCENTI)));
 	}
 	
 	/**

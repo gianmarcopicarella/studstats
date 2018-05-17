@@ -2,7 +2,6 @@ package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -27,7 +26,6 @@ public class AnalizzatoreVoto implements Analizzatore {
 		HashMap<String, Number> rapporto = new HashMap<String, Number>();		
 		List<Integer> ints = studs.stream().map(s -> Integer.parseInt(s.get("MaxDiVOTO")))
 				.sorted().collect(Collectors.toList());
-		
 		int size = studs.size();
 		if (size > 0) { 
 			rapporto.put("VOTO_MIN", ints.get(0));
@@ -35,13 +33,9 @@ public class AnalizzatoreVoto implements Analizzatore {
 			rapporto.put("VOTO_MEDIANO", size % 2 == 0 ? 
 					(ints.get(size / 2 - 1) + ints.get(size / 2)) / 2 :
 					ints.get(size / 2));
-			rapporto.put("VOTO_MEDIO", Math.ceil(100 * (ints.stream().mapToDouble(i->i).sum() / size)) / 100);
+			rapporto.put("VOTO_MEDIO", Math.ceil(100 * (double)ints.stream().mapToInt(i->i).sum() / size) / 100);
 		}
-		
-		Map<String, HashMap<String, Number>> vvv = new HashMap<String, HashMap<String, Number>>();
-		vvv.put("VOTO", rapporto);
-		
-		return new Rapporto(vvv);
+		return new Rapporto(Map.of("VOTO", rapporto));
 	}
 	
 	/**

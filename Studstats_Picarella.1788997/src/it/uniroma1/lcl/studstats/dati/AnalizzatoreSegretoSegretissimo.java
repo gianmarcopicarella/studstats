@@ -25,7 +25,7 @@ public class AnalizzatoreSegretoSegretissimo implements Analizzatore {
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		return new Rapporto(Map.of("REGIONI", Utils.contaPerChiaveEOrdina(studs.stream()
 				.filter(s -> s.get("NAZIONE_DI_NASCITA").equals("ITALIA"))
-				.collect(Collectors.toList()), "REGIONE_DI_NASCITA")));
+				.collect(Collectors.toList()), "REGIONE_DI_NASCITA", Utils.VALORIDECRESCENTI)));
 	}
 	
 	/**

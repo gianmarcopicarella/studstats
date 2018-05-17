@@ -34,7 +34,7 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		Map<String, Integer> temp = new HashMap<>();
+		HashMap<String, Integer> temp = new HashMap<>();
 		studs.stream().filter(s -> s.get("NAZIONE_DI_NASCITA").equals("ITALIA"))
 		.collect(Collectors.groupingBy(s -> s.get("REGIONE_DI_NASCITA"))).entrySet()
 		.forEach(e -> {

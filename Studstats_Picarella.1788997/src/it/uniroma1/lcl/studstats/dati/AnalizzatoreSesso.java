@@ -1,11 +1,8 @@
 package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.TreeMap;
 
 import it.uniroma1.lcl.studstats.Studente;
 import it.uniroma1.lcl.studstats.utils.Utils;
@@ -23,9 +20,7 @@ public class AnalizzatoreSesso implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		HashMap<String, TreeMap<String, Integer>> m = new HashMap<String, TreeMap<String, Integer>>();
-		m.put("SESSO", Utils.contaPerChiave(studs, "SESSO"));
-		return new Rapporto(m);
+		return new Rapporto(Map.of("SESSO", Utils.contaPerChiave(studs, "SESSO")));
 	}
 	
 	/**
@@ -33,7 +28,6 @@ public class AnalizzatoreSesso implements Analizzatore {
 	 */
 	@Override
 	public TipoRapporto getTipo() {
-		// TODO Auto-generated method stub
 		return RapportoSemplice.AS;
 	}
 	
