@@ -1,14 +1,7 @@
 package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Map;
-
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreAnnoDiploma;
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreIstituti;
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreMediaStudentiItalianiPerRegione;
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreSesso;
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreStudentiVotoMaggiore;
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreTitoloDiStudio;
-import it.uniroma1.lcl.studstats.analizzatori.AnalizzatoreVoto;
+import java.util.Optional;
 /**
  * Interfaccia che istanzia gli analizzatori di base
  * (e' possibile sostituire i metodi con una propria
@@ -35,7 +28,7 @@ public interface Analizzatori {
     static Analizzatore sesso() { return new AnalizzatoreSesso(); }
     /**
 	 * 
-	 * @return Una nuova istanza della classe AnalizzatoreTitoloDiStudio.
+	 * @return Una nuova istanza della classe AnalizzatoreTitoloDiS	tudio.
 	 */
     static Analizzatore titoloDiStudio() { return new AnalizzatoreTitoloDiStudio(); }
     /**
@@ -63,8 +56,9 @@ public interface Analizzatori {
      * 
      * @return Una nuova istanza della classe AnalizzatoreMediaStudentiItalianiPerRegione.
      */
-    static Analizzatore analizzatoreBonus() {
-    	return new AnalizzatoreMediaStudentiItalianiPerRegione(Map.Entry.<String, Integer>comparingByValue().reversed());
+    static Optional<Analizzatore> analizzatoreBonus() {
+    	AnalizzatoreMediaStudentiItalianiPerRegione a = new AnalizzatoreMediaStudentiItalianiPerRegione(Map.Entry.<String, Integer>comparingByValue().reversed()); 
+    	return Optional.of(a);
     }
     
     /**

@@ -1,15 +1,11 @@
-package it.uniroma1.lcl.studstats.analizzatori;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.studstats.dati.Analizzatore;
-import it.uniroma1.lcl.studstats.dati.RapportoSemplice;
-import it.uniroma1.lcl.studstats.dati.TipoRapporto;
 import it.uniroma1.lcl.studstats.utils.Utils;
 
 
@@ -27,7 +23,7 @@ public class AnalizzatoreSegretoSegretissimo implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		return new Rapporto(Map.of("REGIONI", Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs.stream()
+		return new Rapporto(Map.of("REGIONI", Utils.contaPerChiaveEOrdina(studs.stream()
 				.filter(s -> s.get("NAZIONE_DI_NASCITA").equals("ITALIA"))
 				.collect(Collectors.toList()), "REGIONE_DI_NASCITA")));
 	}
@@ -53,6 +49,8 @@ public class AnalizzatoreSegretoSegretissimo implements Analizzatore {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		return o == this || !(o == null || this.getClass() != o.getClass());	
+		if(o == this) return true;
+		if(o == null || this.getClass() != o.getClass()) return false;
+		return true;		
 	}
 }

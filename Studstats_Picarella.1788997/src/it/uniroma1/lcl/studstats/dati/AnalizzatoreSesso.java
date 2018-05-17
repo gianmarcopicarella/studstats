@@ -1,15 +1,14 @@
-package it.uniroma1.lcl.studstats.analizzatori;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 
-import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.studstats.dati.Analizzatore;
-import it.uniroma1.lcl.studstats.dati.TipoRapporto;
 import it.uniroma1.lcl.studstats.utils.Utils;
-import it.uniroma1.lcl.studstats.dati.RapportoSemplice;
 
 /**
  * Analizzatore che restituisce un Rapporto contenente il numero di studenti raggruppati per sesso. 
@@ -24,7 +23,9 @@ public class AnalizzatoreSesso implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		return new Rapporto(Map.of("SESSO", Utils.contaPerChiave(studs, "SESSO")));
+		HashMap<String, TreeMap<String, Integer>> m = new HashMap<String, TreeMap<String, Integer>>();
+		m.put("SESSO", Utils.contaPerChiave(studs, "SESSO"));
+		return new Rapporto(m);
 	}
 	
 	/**
@@ -49,6 +50,8 @@ public class AnalizzatoreSesso implements Analizzatore {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		return o == this || !(o == null || this.getClass() != o.getClass());	
+		if(o == this) return true;
+		if(o == null || this.getClass() != o.getClass()) return false;
+		return true;
 	}
 }

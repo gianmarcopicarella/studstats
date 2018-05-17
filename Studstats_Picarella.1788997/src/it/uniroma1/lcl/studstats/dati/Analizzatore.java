@@ -2,7 +2,6 @@ package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
 
-import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
 
 /**

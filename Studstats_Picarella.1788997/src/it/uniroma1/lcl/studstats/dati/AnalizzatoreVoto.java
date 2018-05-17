@@ -1,17 +1,14 @@
-package it.uniroma1.lcl.studstats.analizzatori;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.studstats.dati.Analizzatore;
-import it.uniroma1.lcl.studstats.dati.TipoRapporto;
-import it.uniroma1.lcl.studstats.dati.RapportoSemplice;
 
 /**
  * Analizzatore che restituisce un Rapporto contenente il voto medio, 
@@ -27,7 +24,7 @@ public class AnalizzatoreVoto implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		Map<String, Number> rapporto = new HashMap<String, Number>();		
+		HashMap<String, Number> rapporto = new HashMap<String, Number>();		
 		List<Integer> ints = studs.stream().map(s -> Integer.parseInt(s.get("MaxDiVOTO")))
 				.sorted().collect(Collectors.toList());
 		
@@ -38,9 +35,13 @@ public class AnalizzatoreVoto implements Analizzatore {
 			rapporto.put("VOTO_MEDIANO", size % 2 == 0 ? 
 					(ints.get(size / 2 - 1) + ints.get(size / 2)) / 2 :
 					ints.get(size / 2));
-			rapporto.put("VOTO_MEDIO", Math.floor(100 * ints.stream().mapToInt(i->i).sum() / size) / 100);
+			rapporto.put("VOTO_MEDIO", Math.ceil(100 * (ints.stream().mapToDouble(i->i).sum() / size)) / 100);
 		}
-		return new Rapporto(Map.of("VOTO", rapporto));
+		
+		Map<String, HashMap<String, Number>> vvv = new HashMap<String, HashMap<String, Number>>();
+		vvv.put("VOTO", rapporto);
+		
+		return new Rapporto(vvv);
 	}
 	
 	/**
@@ -64,6 +65,8 @@ public class AnalizzatoreVoto implements Analizzatore {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		return o == this || !(o == null || this.getClass() != o.getClass());	
+		if(o == this) return true;
+		if(o == null || this.getClass() != o.getClass()) return false;
+		return true;		
 	}
 }

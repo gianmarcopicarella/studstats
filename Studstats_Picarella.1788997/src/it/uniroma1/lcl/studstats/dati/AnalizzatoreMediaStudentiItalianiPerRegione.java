@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.studstats.analizzatori;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -8,11 +8,7 @@ import java.util.Objects;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.studstats.dati.Analizzatore;
-import it.uniroma1.lcl.studstats.dati.RapportoComposto;
-import it.uniroma1.lcl.studstats.dati.TipoRapporto;
 import it.uniroma1.lcl.studstats.utils.Utils;
 
 /**
@@ -46,7 +42,7 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 					.mapToInt(i -> Integer.parseInt(i.get("MaxDiVOTO"))).sum() / e.getValue().size());
 		});
 		return new Rapporto(Map.of("MEDIA_REGIONALE", 
-				Utils.ordinaPerValori(temp, this.comparator)));
+				Utils.ordinaMappa(temp, this.comparator)));
 	}
 	
 	/**
@@ -70,8 +66,9 @@ public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore
 	 */
 	@Override
 	public boolean equals(Object o) {
-		if(o != this || o == null || this.getClass() != o.getClass()) return false;
+		if(o == this) return true;
+		if(o == null || this.getClass() != o.getClass()) return false;
 		AnalizzatoreMediaStudentiItalianiPerRegione a = (AnalizzatoreMediaStudentiItalianiPerRegione)(o);
-		return a.comparator == this.comparator;
+		return a.comparator.equals(this.comparator);
 	}
 }

@@ -2,13 +2,11 @@ package it.uniroma1.lcl.studstats;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import it.uniroma1.lcl.studstats.dati.Analizzatore;
+import it.uniroma1.lcl.studstats.dati.Rapporto;
 import it.uniroma1.lcl.studstats.dati.TipoRapporto;
 import it.uniroma1.lcl.studstats.utils.File;
 import it.uniroma1.lcl.studstats.utils.FileCsv;
@@ -24,8 +22,7 @@ public class Studstats implements AggregatoreStatistico {
 	
 	private File file;
 	private List<Studente> studenti;
-	private Map<TipoRapporto, Set<Analizzatore>> analizzatori;
-	private int contatoreAnalizzatori;
+	private LinkedHashSet<Analizzatore> analizzatori;
 	
 	/**
 	 * Ritorna una nuova istanza della classe Studstats a partire da un filepath fornito come parametro.
@@ -48,7 +45,7 @@ public class Studstats implements AggregatoreStatistico {
 	private Studstats(String fp) {
 		this.file = new FileCsv(fp);
 		this.studenti = (ArrayList<Studente>) this.file.parse();
-		this.analizzatori = new HashMap<TipoRapporto, Set<Analizzatore>>();
+		this.analizzatori = new LinkedHashSet<Analizzatore>();
 	}
 	
 	/**
@@ -62,13 +59,11 @@ public class Studstats implements AggregatoreStatistico {
 	
 	/**
 	 * {@inheritDoc}
-	 * Aggiunge un nuovo Analizzatore alla Map.
+	 * Aggiunge un nuovo Analizzatore alla LinkedHashSet di Studstats.
 	 */
 	@Override
 	public void add(Analizzatore an) {
-		this.analizzatori.putIfAbsent(an.getTipo(), new HashSet<Analizzatore>());
-		this.analizzatori.get(an.getTipo()).add(an);
-		this.contatoreAnalizzatori++;
+		this.analizzatori.add(an);
 	}
 
 	/**
@@ -81,12 +76,16 @@ public class Studstats implements AggregatoreStatistico {
 	public List<Rapporto> generaRapporti(TipoRapporto... tipiRapporto) {
 		List<Rapporto> r = new ArrayList<Rapporto>();
 		if(tipiRapporto.length == 0)
-			this.analizzatori.entrySet().forEach(e -> {
-				e.getValue().forEach(a -> r.add(a.generaRapporto(this.studenti)));
-			});
+			this.analizzatori.forEach(a -> r.add(a.generaRapporto(this.studenti)));
 		
-		for(TipoRapporto t: tipiRapporto)
-			this.analizzatori.get(t).forEach(a -> r.add(a.generaRapporto(this.studenti)));
+		for(TipoRapporto t : tipiRapporto) {
+			for(Analizzatore a : this.analizzatori) {
+				if(a.getTipo() == t) {
+					r.add(a.generaRapporto(this.studenti));
+					break;
+				}
+			}
+		}
 		return r;
 	}
 	
@@ -95,6 +94,6 @@ public class Studstats implements AggregatoreStatistico {
 	 */
 	@Override
 	public int numeroAnalizzatori() {
-		return this.contatoreAnalizzatori;
+		return this.analizzatori.size();
 	}
 }

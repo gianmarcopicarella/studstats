@@ -1,15 +1,15 @@
-package it.uniroma1.lcl.studstats.analizzatori;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
-import it.uniroma1.lcl.studstats.Rapporto;
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.studstats.dati.Analizzatore;
-import it.uniroma1.lcl.studstats.dati.TipoRapporto;
 import it.uniroma1.lcl.studstats.utils.Utils;
-import it.uniroma1.lcl.studstats.dati.RapportoSemplice;
 
 /**
  * Analizzatore che restituisce un Rapporto contenente il numero di diplomati 
@@ -26,8 +26,21 @@ public class AnalizzatoreTitoloDiStudio implements Analizzatore {
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		return new Rapporto(Map.of("TITOLO", 
-				Utils.contaPerChiaveEOrdinaPerValoriDecrescenti(studs, "TITOLO_DI_STUDIO")));
+		
+		Map<String, LinkedHashMap<String, Long>> vvv = new HashMap<String, LinkedHashMap<String, Long>>();
+		//vvv.put("VOTO", Utils.contaPerChiaveEOrdina(studs, "TITOLO_DI_STUDIO"));
+		
+		
+		//Map<String, LinkedHashMap<String, Long>> map = new HashMap<String, LinkedHashMap<String, Long>>();
+		
+		LinkedHashMap<String, Long> xxx = studs.stream().collect(Collectors.groupingBy(i -> ((Studente)i).get("TITOLO_DI_STUDIO"), HashMap::new, Collectors.counting())).entrySet().stream()
+		.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+		.collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue, (e1,e2)->e1, LinkedHashMap::new));
+		
+		vvv.put("TITOLO", xxx);
+		
+		
+		return new Rapporto(vvv);
 	}
 	
 	/**
@@ -51,6 +64,8 @@ public class AnalizzatoreTitoloDiStudio implements Analizzatore {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		return o == this || !(o == null || this.getClass() != o.getClass());	
+		if(o == this) return true;
+		if(o == null || this.getClass() != o.getClass()) return false;
+		return true;	
 	}
 }
