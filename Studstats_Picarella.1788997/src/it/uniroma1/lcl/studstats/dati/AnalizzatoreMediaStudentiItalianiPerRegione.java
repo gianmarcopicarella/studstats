@@ -12,7 +12,8 @@ import it.uniroma1.lcl.studstats.Studente;
 import it.uniroma1.lcl.studstats.utils.Utils;
 
 /**
- * Analizzatore inizializzato con un comparator che restituisce un Rapporto (ordinato per valore tramite il comparator fornito) contenente la media regionale italiana dei vari studenti.
+ * Analizzatore inizializzato con un comparator che restituisce un Rapporto (ordinato per valore tramite il comparator fornito) 
+ * contenente per ogni regione italiana (presente tra i vari studenti) la media di tutti gli studenti che hanno ricevuto il diploma nella regione presa in considerazione.
  * @author gianpcrx
  *
  */
