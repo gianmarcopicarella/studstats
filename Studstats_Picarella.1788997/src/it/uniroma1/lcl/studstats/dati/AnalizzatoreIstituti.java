@@ -1,11 +1,11 @@
-package it.uniroma1.lcl.dati;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.utils.Utils;
+import it.uniroma1.lcl.studstats.utils.Utils;
 /**
  * Analizzatore che restituisce un Rapporto contenente il numero di studenti per ogni istituto superiore trovato. 
  * Il Rapporto è ordinato in modo descrescente in base alla chiave.
@@ -22,7 +22,7 @@ public class AnalizzatoreIstituti implements Analizzatore {
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {		
 		return new Rapporto(Map.of("ISTITUTI", 
-				Utils.contaPerChiaveEOrdina(studs, "ISTITUTO_SUPERIORE", Utils.VALORIDECRESCENTI)));
+				Utils.contaPerChiaveEOrdina(studs, "ISTITUTO_SUPERIORE", Utils.ORDVALORIDECRESCENTI)));
 	}
 	
 	/**

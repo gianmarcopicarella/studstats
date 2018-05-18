@@ -7,6 +7,9 @@ import java.util.Map;
  * @author gianpcrx
  */
 public class Studente {
+	/**
+	 * Mappa contenente tutti i dati dello studente sottoforma di stringhe.
+	 */
 	private Map<String, String> data;
 	/**
 	 * A partire da chiavi e valori genera una Map contenente i dati dello studente.

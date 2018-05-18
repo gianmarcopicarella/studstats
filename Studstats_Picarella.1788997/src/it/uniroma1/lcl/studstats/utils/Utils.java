@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.utils;
+package it.uniroma1.lcl.studstats.utils;
 
 import java.util.AbstractMap;
 import java.util.Collection;
@@ -16,9 +16,16 @@ import it.uniroma1.lcl.studstats.Studente;
  *
  */
 public final class Utils {
-	
-	public static final Comparator<Map.Entry<String, Integer>> VALORIDECRESCENTI = Map.Entry.<String, Integer>comparingByValue().reversed();
-	public static final Comparator<Map.Entry<String, Integer>> CHIAVIDECRESCENTI = Map.Entry.<String, Integer>comparingByKey().reversed();
+	/**
+	 * Campo statico costante utilizzato come costante all'interno del progetto 
+	 * per identificare un Comparator tra Entry di stringhe e interi che ordina per valori decrescenti.
+	 */
+	public static final Comparator<Map.Entry<String, Integer>> ORDVALORIDECRESCENTI = Map.Entry.<String, Integer>comparingByValue().reversed();
+	/**
+	 * Campo statico costante utilizzato come costante all'interno del progetto 
+	 * per identificare un Comparator tra Entry di stringhe e interi che ordina per chiavi decrescenti.
+	 */
+	public static final Comparator<Map.Entry<String, Integer>> ORDCHIAVIDECRESCENTI = Map.Entry.<String, Integer>comparingByKey().reversed();
 	
 	
 	/**

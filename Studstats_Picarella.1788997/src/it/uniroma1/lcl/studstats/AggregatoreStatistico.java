@@ -2,10 +2,14 @@ package it.uniroma1.lcl.studstats;
 
 import java.util.List;
 
-import it.uniroma1.lcl.dati.Analizzatore;
-import it.uniroma1.lcl.dati.Rapporto;
-import it.uniroma1.lcl.dati.TipoRapporto;
-
+import it.uniroma1.lcl.studstats.dati.Analizzatore;
+import it.uniroma1.lcl.studstats.dati.Rapporto;
+import it.uniroma1.lcl.studstats.dati.TipoRapporto;
+/**
+ * Interfaccia che definisce le operazioni eseguibili da un'AggregatoreStatistico. 
+ * @author gianpcrx
+ *
+ */
 public interface AggregatoreStatistico {
 	/**
      * Aggiunge uno studente per l'analisi

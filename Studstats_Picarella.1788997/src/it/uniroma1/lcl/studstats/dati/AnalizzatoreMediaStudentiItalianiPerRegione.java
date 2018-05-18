@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.dati;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
 import java.util.Comparator;
@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.utils.Utils;
+import it.uniroma1.lcl.studstats.utils.Utils;
 
 /**
  * Analizzatore inizializzato con un comparator che restituisce un Rapporto (ordinato per valore tramite il comparator fornito) contenente la media regionale italiana dei vari studenti.
@@ -17,6 +17,10 @@ import it.uniroma1.lcl.utils.Utils;
  *
  */
 public class AnalizzatoreMediaStudentiItalianiPerRegione implements Analizzatore {
+	/**
+	 * Comparator utilizzato per ordinare la mappa risultante dal rapporto. 
+	 * Deve essere specificato come parametro del costruttore.
+	 */
 	private Comparator<Entry<String, Integer>> comparator;
 	
 	/**

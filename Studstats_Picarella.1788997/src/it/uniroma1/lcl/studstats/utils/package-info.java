@@ -11,4 +11,4 @@
  * @author gianpcrx
  * @version 1.0
  */
-package it.uniroma1.lcl.utils;
+package it.uniroma1.lcl.studstats.utils;

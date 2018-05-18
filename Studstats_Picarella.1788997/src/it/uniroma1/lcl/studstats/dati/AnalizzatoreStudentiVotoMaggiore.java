@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.dati;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -14,8 +14,14 @@ import it.uniroma1.lcl.studstats.Studente;
  *
  */
 public class AnalizzatoreStudentiVotoMaggiore implements Analizzatore {
-	
+	/**
+	 * Voto minimo utilizzato per filtrare la collection di studenti da analizzare.
+	 */
 	private int votoMinimo;
+	/**
+	 * Analizzatore utilizzato per generare il rapporto. 
+	 * Può essere passato come parametro al costruttore altrimenti viene istanziato come AnalizzatoreSesso.
+	 */
 	private Analizzatore analizzatore;
 	
 	/**

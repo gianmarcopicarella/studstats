@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.dati;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.utils.Utils;
+import it.uniroma1.lcl.studstats.utils.Utils;
 
 
 /**
@@ -25,7 +25,7 @@ public class AnalizzatoreSegretoSegretissimo implements Analizzatore {
 	public Rapporto generaRapporto(Collection<Studente> studs) {
 		return new Rapporto(Map.of("REGIONI", Utils.contaPerChiaveEOrdina(studs.stream()
 				.filter(s -> s.get("NAZIONE_DI_NASCITA").equals("ITALIA"))
-				.collect(Collectors.toList()), "REGIONE_DI_NASCITA", Utils.VALORIDECRESCENTI)));
+				.collect(Collectors.toList()), "REGIONE_DI_NASCITA", Utils.ORDVALORIDECRESCENTI)));
 	}
 	
 	/**

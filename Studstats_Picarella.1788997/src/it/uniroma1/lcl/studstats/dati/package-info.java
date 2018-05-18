@@ -22,4 +22,4 @@
  * @author gianpcrx
  * @version 1.0
  */
-package it.uniroma1.lcl.dati;
+package it.uniroma1.lcl.studstats.dati;

@@ -1,29 +1,29 @@
-package it.uniroma1.lcl.dati;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 
 import it.uniroma1.lcl.studstats.Studente;
-import it.uniroma1.lcl.utils.Utils;
+import it.uniroma1.lcl.studstats.utils.Utils;
 
 /**
  * Analizzatore che restituisce un Rapporto contenente il numero di diplomati 
- * in ogni anno ordinati per anno in ordine descrescente.
+ * raggruppati per titolo di studio ottenuto. Il Rapporto è ordinato in modo descrescente per valore.
  * @author gianpcrx
  *
  */
-public class AnalizzatoreAnnoDiploma implements Analizzatore {
+public class AnalizzatoreTitoloDiStudio implements Analizzatore {
 	
 	/**
-	 * Genera un Rapporto contenente per ogni anno il numero di diplomati. 
-	 * Il Rapporto è ordinato in modo descrescente per chiave.
+	 * Genera un Rapporto contenente il numero di studenti per ogni titolo di studio. 
+	 * Il Rapporto è ordinato per valore.
 	 * {@inheritDoc}
 	 */
 	@Override
 	public Rapporto generaRapporto(Collection<Studente> studs) {
-		return new Rapporto(Map.of("ANNI_DIPLOMA", 
-				Utils.contaPerChiaveEOrdina(studs, "ANNO_DIPLOMA", Utils.CHIAVIDECRESCENTI)));
+		return new Rapporto(Map.of("TITOLO", 
+				Utils.contaPerChiaveEOrdina(studs, "TITOLO_DI_STUDIO", Utils.ORDVALORIDECRESCENTI)));
 	}
 	
 	/**
@@ -31,7 +31,7 @@ public class AnalizzatoreAnnoDiploma implements Analizzatore {
 	 */
 	@Override
 	public TipoRapporto getTipo() {
-		return RapportoSemplice.AAD;
+		return RapportoSemplice.ATDS;
 	}
 	
 	/**
@@ -49,6 +49,6 @@ public class AnalizzatoreAnnoDiploma implements Analizzatore {
 	public boolean equals(Object o) {
 		if(o == this) return true;
 		if(o == null || this.getClass() != o.getClass()) return false;
-		return true;		
+		return true;	
 	}
 }

@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.utils;
+package it.uniroma1.lcl.studstats.utils;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -15,6 +15,9 @@ import it.uniroma1.lcl.studstats.Studente;
  * 
  */
 public abstract class File {
+	/**
+	 * Path utilizzata per il caricamento del file.
+	 */
 	private Path path;
 	
 	/**

@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.dati;
+package it.uniroma1.lcl.studstats.dati;
 
 import java.util.AbstractMap;
 import java.util.Map;
@@ -10,6 +10,9 @@ import java.util.Map;
  *
  */
 public class Rapporto {
+	/**
+	 * Mappa utilizzata per contenere i dati dell'analisi prodotta da un'analizzatore.
+	 */
 	private Map<String, ? extends AbstractMap <String, ? extends Number>> mappa;
 	
 	/**

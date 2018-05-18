@@ -1,4 +1,4 @@
-package it.uniroma1.lcl.utils;
+package it.uniroma1.lcl.studstats.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
